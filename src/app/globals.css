@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------- */
+/* Thème QC AI — design sombre et moderne                                  */
+/* ----------------------------------------------------------------------- */
+
+:root {
+  --background: #05070d;
+  --surface: #0d111c;
+  --surface-elevated: #131829;
+  --border-subtle: #1f2537;
+  --foreground: #f4f6fb;
+  --muted: #8a92a6;
+  --accent: #6d5bff;
+  --accent-soft: #8f7bff;
+  --gl: #22c55e;
+  --rl: #ef4444;
+  --check: #f97316;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border-subtle: var(--border-subtle);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-gl: var(--gl);
+  --color-rl: var(--rl);
+  --color-check: var(--check);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% -10%, rgba(109, 91, 255, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 0%, rgba(34, 197, 94, 0.08), transparent 40%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Scrollbar discrète */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ----------------------------------------------------------------------- */
+/* Animations                                                              */
+/* ----------------------------------------------------------------------- */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(109, 91, 255, 0.35); }
+  50% { box-shadow: 0 0 0 12px rgba(109, 91, 255, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--surface-elevated) 0%,
+    #1b2136 50%,
+    var(--surface-elevated) 100%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s infinite linear;
+}
